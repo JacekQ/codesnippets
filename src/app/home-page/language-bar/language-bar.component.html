@@ -1,0 +1,43 @@
+<nav class="bar-container" fxLayout="row" fxLayoutAlign="end center" [fxShow.xs]="false">
+  <div fxFlex="90" fxLayout="row" fxLayoutAlign="start space-evenly" fxLayoutGap="1rem" class="language-container">
+    <h2 *ngIf="(selectedLanguages$ | async).length === 0">Start By Choosing a Language</h2>
+    <h2 routerLink="/" *ngFor="let lang of (selectedLanguages$ | async) as Langs"
+      (click)="updateSelectedLanguage(lang.lang)"
+      [ngClass]="{'selected': lang.lang === currentLang}">{{ getLangName(lang.lang) }}</h2>
+  </div>
+  <h2 fxFlex="6" *ngIf="isAuth$ | async" (click)="onLogout()">Logout</h2>
+  <h2 fxFlex="6" *ngIf="!(isAuth$ | async)" routerLink="/login">Login</h2>
+  <a fxFlex="4" *ngIf="isAuth$ | async" (click)="openModal()">
+    <i class="fas fa-plus-circle fa-2x"></i>
+  </a>
+</nav>
+
+<nav class="sidebar-container" fxShow="false" fxLayout="column"
+  fxLayoutAlign="start center" [fxShow.xs]="true" [ngClass]="{'isExpanded': isExpanded}">
+  <a fxFlex class="sidenav-toggle" (click)="toggle()">
+    <i class="fas fa-ellipsis-h fa-2x menu-button"></i>
+  </a>
+  <div *ngIf="isAuth$ | async" fxFlexAlign="center" (click)="openModal()">
+    <i class="fas fa-plus-circle fa-2x"></i>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="start space-evenly" fxLayoutGap="1rem" class="language-container">
+    <h2 *ngIf="isAuth$ | async" (click)="onLogout()">Logout</h2>
+    <h2 *ngIf="!(isAuth$ | async)" routerLink="/login">Login</h2>
+    <h2 routerLink="/" *ngFor="let lang of selectedLanguages"
+    (click)="updateSelectedLanguage(lang.lang)"
+    [ngClass]="{'selected': lang.lang === currentLang}">{{ getLangName(lang.lang) }}</h2>
+  </div>
+</nav>
+
+<app-modal-window [(showing)]="showModal" [header]="headerText">
+  <div class="language-list" fxFlex fxLayout="column" fxLayoutAlign="space-around start">
+    <p class="paragraph" *ngFor="let lang of (languageOptions$ | async)" (click)="updateNewSelection(lang.lang)"
+      [ngClass]="{'selected': lang.lang === newSelection, 'already-selected': isSaved(lang.lang)}">{{lang.name}}</p>
+  </div>
+  <div fxFlex fxLayout="column" fxLayoutAlign="center end">
+    <button class="btn btn--white" type="button" (click)="saveLanguage()"
+    [disabled]="!newSelection" [ngClass]="{'disabled': !newSelection}">
+      ADD
+    </button>
+  </div>
+</app-modal-window>

@@ -1,0 +1,21 @@
+<form fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="1.5rem" [formGroup]="snippetForm" (ngSubmit)="saveSnippet(snippetForm)" novalidate>
+  <div fxFlex fxFlexOrder="1">
+    <label>Name</label>
+    <input type="text" class="form-control" placeholder="enter snippet name" formControlName="title">
+  </div>
+  <div fxFlex fxFlexOrder="2">
+    <label>Description</label>
+    <input type="text" class="form-control" placeholder="enter description" formControlName="desc">
+  </div>
+  <div fxFlex fxFlexOrder="3">
+    <label>Url</label>
+    <input type="text" class="form-control" placeholder="enter website" formControlName="url">
+  </div>
+  <div fxFlex fxFlexOrder="4">
+    <label>Code Snippet</label>
+    <textarea class="form-control code-area" placeholder="enter snippet code" formControlName="code"></textarea>
+  </div>
+  <div fxLayoutAlign="end center" fxFlexOrder="5">
+    <button class="btn btn--white" type="submit" [disabled]="snippetForm.invalid" [ngClass]="{'disabled': snippetForm.invalid}">SAVE</button>
+  </div>
+</form>

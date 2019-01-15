@@ -1,0 +1,3 @@
+<app-modal-window [(showing)]="showModal" [header]="headerText" (showingChange)="hide()">
+  <app-edit-form [snippet]="snippet" (formClosed)="hide()"></app-edit-form>
+</app-modal-window>

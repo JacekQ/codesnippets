@@ -1,0 +1,120 @@
+.card-container {
+  margin-top: 2rem;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.card-body {
+  height: 25rem;
+  width: 25rem;
+  overflow: hidden;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  background-color: $color-white;
+  @include box-shadow(rgba($color-black, 0.15) 0 2px 5px 0);
+
+  @include respond(phone) {
+    width: 80vw;
+  }
+
+  &__header {
+    font-size: $font-size-small;
+    font-weight: $font-reg;
+    color: rgba($color-black, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  &__title {
+    font-family: 'Lora', serif;
+    font-size: $font-size-lg;
+    font-weight: $font-reg;
+    color: rgba($color-black, 0.9);
+    line-height: 1.25;
+  }
+
+  &__descr {
+    max-height: 38%;
+    font-size: $font-size-reg;
+    font-variant-ligatures: none;
+    font-weight: $font-reg;
+    text-rendering: optimizeLegibility;
+    color: rgba($color-black, 0.6);
+    line-height: 1.4;
+    overflow: hidden;
+  }
+
+  &__footer {
+    margin-top: auto;
+    font-size: $font-size-small;
+    font-weight: $font-reg;
+    letter-spacing: 2px;
+  }
+
+  &--adder {
+    // @include snipped-card-bg($color-secondary);
+    background: ($color-secondary);
+
+    .icon {
+      color: $color-primary;
+    }
+  }
+}
+
+.card-body_old {
+  height: 25rem;
+  width: 25rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  @include box-shadow(rgba(0, 0, 0, .1) -5px 5px 2px);
+  @include snipped-card-bg($color-primary);
+
+  @include respond(phone) {
+    width: 80vw;
+  }
+
+  &--adder {
+    @include snipped-card-bg($color-secondary);
+
+    .icon {
+      color: $color-primary;
+    }
+  }
+}
+
+.single-card {
+  position: relative;
+  width: 20vw;
+  margin: 3rem auto;
+  min-width: 20vw;
+  overflow: hidden;
+  background-color: $color-primary;
+  padding: 3rem;
+  color: $color-base;
+  @include box-border($color-secondary);
+  @include border-radius(2rem);
+
+  @include respond(phone) {
+    width: 80vw;
+  }
+}
+
+.code-container {
+  max-height: 50vh;
+  margin-bottom: 2rem;
+}
+
+.code-pre {
+  overflow: auto;
+  white-space: pre;
+  width: 100%;
+}
+
+.code-bordered {
+  display: block;
+  border: white solid 2px;
+  padding: 0.5rem;
+  -webkit-text-size-adjust: none;
+  @include border-radius(0.5rem);
+}

@@ -1,0 +1,37 @@
+form {
+  width: 500px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  text-transform: uppercase;
+  font-size: $font-size-small;
+}
+
+textarea, input {
+  padding: 0.5rem;
+  width: 100%;
+  font-family: $font-family-body;
+  font-size: $font-size-reg;
+  color: $color-primary;
+  background-color: $color-base;
+  @include border-radius(0.5rem);
+
+  &::placeholder {
+    font-size: $font-size-small;
+    font-style: italic;
+    color: darken($color-grey-light-2, 30%);
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  color: $color-grey-dark;
+  cursor: not-allowed;
+}
+
+.code-area {
+  min-height: 15rem;
+}

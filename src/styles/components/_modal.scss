@@ -1,0 +1,37 @@
+#modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10 !important;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100vh;
+  width: 100vw;
+}
+
+#modal-body {
+  position: relative;
+  margin: 3rem;
+  min-width: 40vw;
+  z-index: 11 !important;
+  background-color: $color-primary;
+  padding: 2rem;
+  color: $color-base;
+  overflow-y: auto;
+  @include box-border($color-base);
+  @include border-radius(1rem);
+
+  @include respond(phone) {
+    max-height: 95vh;
+    min-width: 80vw;
+  }
+}
+
+#close-button {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  cursor: pointer;
+}

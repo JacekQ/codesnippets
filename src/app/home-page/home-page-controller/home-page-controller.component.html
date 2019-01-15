@@ -1,0 +1,23 @@
+<div>
+  <app-language-bar></app-language-bar>
+</div>
+
+<div class="card-container"
+    fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutAlign.xs="center center"
+    fxLayoutGap="1.6rem" fxLayoutGap.xs="0" *ngIf="(isLoadedSnippets$ | async) else loading">
+  <div *ngIf="isAuth$ | async">
+    <app-snippet-adder [lang]="currentLang$ | async" (editSnippet)="onEditSnippet($event)"></app-snippet-adder>
+  </div>
+
+  <div *ngFor="let snippet of (loadedSnippets$ | async)">
+    <app-snippet-card [snippet]="snippet" (editSnippet)="onEditSnippet($event)" (removeSnippet)="onRemoveSnippet($event)"></app-snippet-card>
+  </div>
+</div>
+
+<ng-container #edit></ng-container>
+
+<ng-container #alert></ng-container>
+
+<ng-template #loading>
+  <div class="loader"></div>
+</ng-template>

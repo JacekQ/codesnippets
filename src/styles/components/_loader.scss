@@ -1,0 +1,13 @@
+.loader {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transition: transform(-50%, -50%);
+
+  margin-top: 6rem;
+  border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
+  animation: jump 1.5s ease-out infinite alternate;
+  background: radial-gradient(circle at 50% 120%, $color-primary-dark, $color-primary 10%, $color-primary-light 80%, $color-secondary 100%);
+}

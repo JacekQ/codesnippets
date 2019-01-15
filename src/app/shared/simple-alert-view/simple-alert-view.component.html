@@ -1,0 +1,24 @@
+<div *ngIf="visible">
+  <div id="modal-bg"></div>
+
+  <div class="card">
+
+    <div class="header">
+      <h1 class="heading-primary">
+        <span class="heading-primary--main">{{title}}</span>
+      </h1>
+    </div>
+
+    <div class="message">
+        <i class="fas fa-{{icon}} fa-3x u-margin-right-medium text-{{icon}}" [class.fa-exclamation]="icon==='exclamation'"></i>
+        <span>{{message}}</span>
+    </div>
+
+    <div class="footer">
+      <button class="btn btn--green" *ngIf="type !== 'info'" (click)="onCancel()">{{cancelText}}</button> &nbsp;
+      <button class="btn btn--white u-margin-left-medium" (click)="onOk()">{{okText}}</button>
+    </div>
+
+  </div>
+
+</div>

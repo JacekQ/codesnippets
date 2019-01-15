@@ -1,0 +1,13 @@
+<form fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="1.5rem" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)" novalidate>
+  <div fxLayout="column" fxFlexOrder="1">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" placeholder="enter email" formControlName="email">
+  </div>
+  <div fxLayout="column" fxFlexOrder="2">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" placeholder="enter password" formControlName="password">
+  </div>
+  <div fxLayoutAlign="end center" fxFlexOrder="3">
+    <button type="submit" class="btn btn--white" [disabled]="loginForm.invalid" [ngClass]="{'disabled': loginForm.invalid}">LOGIN</button>
+  </div>
+</form>

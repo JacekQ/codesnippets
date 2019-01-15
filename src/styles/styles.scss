@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+@import "base/animations";
+@import "base/base";
+@import "base/typography";
+@import "base/utilities";
+
+@import "components/button";
+@import "components/card";
+@import "components/form";
+@import "components/modal";
+@import "components/popup";
+@import "components/loader";
+
+// @import "layout/grid";
+// @import "layout/footer";
+// @import "layout/header";
+// @import "layout/navigation";
+
+// @import "pages/home";

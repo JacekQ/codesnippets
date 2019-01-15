@@ -1,0 +1,20 @@
+<div class="card-body u-blue-hover" fxLayout="column" fxLayoutAlign="start left" (click)="openModal()">
+  <p class="card-body__header u-mb-1">{{ snippet.lang }}</p>
+  <h1 class="card-body__title u-mb-1 u-mt-0">{{ snippet.title }}</h1>
+  <p class="card-body__descr">{{ snippet.desc }}</p>
+  <p class="card-body__footer" [innerHTML]="snippet?.url | httpLink:'_new'" (click)="doNothing()"></p>
+</div>
+
+<app-modal-window [header]="snippet?.title" [(showing)]="showModal">
+  <p class="paragraph">{{ snippet?.desc }}</p>
+  <p class="paragraph" [innerHTML]="snippet?.url | httpLink:'_new':true"></p>
+  <div class="code-container" fxLayoutAlign="start center">
+    <pre class="code-pre" fxFlexAlign="stretch">
+      <code class="code-bordered" #codeSnippet>{{snippet?.code}}</code>
+    </pre>
+  </div>
+  <div fxLayoutAlign="end center" *ngIf="isAuth$ | async">
+    <button class="btn btn--green" (click)="onDelete(snippet)" type="button">Remove</button>
+    <button class="btn btn--white u-margin-left-medium" (click)="onEdit(snippet)" type="button">Edit</button>
+  </div>
+</app-modal-window>

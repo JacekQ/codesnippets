@@ -1,0 +1,15 @@
+<div *ngIf="showing" id="modal-bg" fxLayout="row" fxLayoutAlign="center center" fxFill (click)="close()">
+  <div id="modal-body" fxLayout="column" fxLayoutAlign="space-between center" fxFlextAlign="space-around" (click)="$event.stopPropagation()">
+    <div id="close-button" (click)="close()">
+      <i class="fas fa-times fa-2x"></i>
+    </div>
+    <div id="header" fxFlextAlign="center end">
+      <h1 class="heading-primary">
+        <span class="heading-primary--main">{{header}}</span>
+      </h1>
+    </div>
+    <div id="body" fxFill>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

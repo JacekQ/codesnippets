@@ -1,0 +1,91 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+h2 {
+  color: $color-base;
+  font-family: $font-family-header;
+  font-size: $font-size-lg;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+svg {
+  cursor: pointer;
+  color: $color-base;
+  margin: 0.5rem 1rem;
+}
+
+.bar-container {
+  padding: 0 2rem;
+  background-color: $color-primary;
+  @include box-shadow(rgba(0, 0, 0, .1) 0 5px 2px)
+}
+
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: $color-primary;
+  z-index: 100;
+  transform: translateX(-85%);
+  transition: transform 0.3s;
+}
+
+.selected {
+   background-color: rgba(255, 255, 255, .3);
+   @include border-radius(0.5rem);
+}
+
+.already-selected {
+  position: relative;
+  text-decoration: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    height: 0.125em;
+    width: 100%;
+    background: linear-gradient(to right, rgba(209, 15, 15, 0.788), rgba(209, 15, 15, 0.788));
+    margin-top: calc(0.125em / 2 * -1);
+    opacity: .5;
+  }
+}
+
+.language-container {
+  margin: 0 10px;
+  overflow: auto;
+}
+
+.menu-button {
+  background-color: $color-primary;
+  color: $color-base;
+  border: $color-base solid 2px;
+  @include border-radius(100%);
+}
+
+.isExpanded {
+  transform: translateX(0);
+  box-shadow: 10px 0px 5px 0px rgba($color-grey-dark-3,0.6);
+}
+
+.sidenav-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(50%);
+}
+
+.language-list {
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 50%;
+  margin: auto;
+
+  .paragraph {
+    align-self: center;
+  }
+}
