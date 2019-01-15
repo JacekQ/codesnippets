@@ -23,24 +23,32 @@ On the command line run the following:
 
 You have to create new project on Firebase website at: `https://console.firebase.google.com/` and create Cloud Firestore database with 3 documents: langs, savedlangs and snippets.
 
-Sample single document `langs` structure:
+### Sample single document `langs` structure:
+
 <code>
-  lang<string>: "html",
-  name<string>: "HTML"
+  lang[string]: "html",
+
+  name[string]: "HTML"
 </code>  
 
-Sample single document `savedlangs` structure:
+### Sample single document `savedlangs` structure:
+
 <code>
-  lang<string>: "html"
+  lang[string]: "html"
 </code>  
 
-Sample single document `snippets` structure:
+### Sample single document `snippets` structure:
+
 <code>
-  code<string>: ".child {  position: relative;  top: 50%;  transform: perspective(1px) translateY(-50%);}",
-  desc<string>: "Snippet description"
-  lang<string>: "css"
-  title<string>: "Sample snippet"
-  url<string>: ""
+  code[string]: ".child {  position: relative;  top: 50%;  transform: perspective(1px) translateY(-50%);}",
+
+  desc[string]: "Snippet description"
+
+  lang[string]: "css"
+
+  title[string]: "Sample snippet"
+
+  url[string]: ""
 </code>  
 
 Edit file `src/environments/environment_start.ts` and set the following part - Firebase params:
