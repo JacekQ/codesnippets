@@ -26,29 +26,29 @@ You have to create new project on Firebase website at: `https://console.firebase
 ### Sample single document `langs` structure:
 
 <code>
-  lang[string]: "html",
+lang[string]: "html",
 
-  name[string]: "HTML"
+name[string]: "HTML"
 </code>  
 
 ### Sample single document `savedlangs` structure:
 
 <code>
-  lang[string]: "html"
+lang[string]: "html"
 </code>  
 
 ### Sample single document `snippets` structure:
 
 <code>
-  code[string]: ".child {  position: relative;  top: 50%;  transform: perspective(1px) translateY(-50%);}",
+code[string]: ".child {  position: relative;  top: 50%;  transform: perspective(1px) translateY(-50%);}",
 
-  desc[string]: "Snippet description"
+desc[string]: "Snippet description"
 
-  lang[string]: "css"
+lang[string]: "css"
 
-  title[string]: "Sample snippet"
+title[string]: "Sample snippet"
 
-  url[string]: ""
+url[string]: ""
 </code>  
 
 Edit file `src/environments/environment_start.ts` and set the following part - Firebase params:
