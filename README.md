@@ -1,14 +1,15 @@
-# CodeSnipets
+# Code Snippets
 
-Angular 7 project to store code snippets in diffent languages like: Angular, CSS, HTML, Javascript, React, SCSS, Typescript. 
-Project build using code formating, flex-layout, ngrx store, SCSS and Firebase.
-Adding snippets is possible for logged in user and visible for all.
+This is Angular 7 project to store code snippets in diffent languages like: Angular, CSS, HTML, Javascript, React, SCSS, Typescript. 
+Project uses code formatting, flex-layout, ngrx store, SCSS and Firebase.
+
+Adding snippets is only possible for logged in user and visible for all.
 
 ## Installation pre-requisites
 
-This project has minimal dependencies, you only need node and npm installed on your machine. These are some tutorials to install node in different operating systems.
+This project has minimal dependencies, you only need firebase account, node and npm installed on your machine. These are some tutorials to install node in different operating systems.
 
-Make sure to install the latest version of Node 6
+Make sure to install Node version of 8.11 at least.
 
 ## Installation Instructions
 
@@ -20,7 +21,27 @@ On the command line run the following:
 
 <code>npm install</code>
 
-You have to create new project on Firebase website at: `https://console.firebase.google.com/`
+You have to create new project on Firebase website at: `https://console.firebase.google.com/` and create Cloud Firestore database with 3 documents: langs, savedlangs and snippets.
+
+Sample single document `langs` structure:
+<code>
+  lang<string>: "html",
+  name<string>: "HTML"
+</code>  
+
+Sample single document `savedlangs` structure:
+<code>
+  lang<string>: "html"
+</code>  
+
+Sample single document `snippets` structure:
+<code>
+  code<string>: ".child {  position: relative;  top: 50%;  transform: perspective(1px) translateY(-50%);}",
+  desc<string>: "Snippet description"
+  lang<string>: "css"
+  title<string>: "Sample snippet"
+  url<string>: ""
+</code>  
 
 Edit file `src/environments/environment_start.ts` and set the following part - Firebase params:
 
