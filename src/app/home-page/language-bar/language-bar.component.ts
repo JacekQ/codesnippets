@@ -1,22 +1,22 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import {
-  Languages
-} from '../services/language-manager.service';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Langs } from '../models/langs.model';
+import { takeUntil } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import * as _ from 'lodash';
+import {componentDestroyed} from '@w11k/ngx-componentdestroyed';
+
 import * as fromStore from '../../store/reducers';
-import * as authActions from '../../store/actions/auth.actions';
 import * as langsActions from '../../store/actions/langs.actions';
 import { AuthService } from '../../auth-page/services/auth.service';
+import { Languages } from '../services/language-manager.service';
+import { Langs } from '../models/langs.model';
 
 @Component({
   selector: 'app-language-bar',
   templateUrl: './language-bar.component.html',
   styleUrls: ['./language-bar.component.scss']
 })
-export class LanguageBarComponent implements OnInit {
+export class LanguageBarComponent implements OnInit, OnDestroy {
   readonly headerText = 'Select a Language';
 
   isExpanded = false;
@@ -38,17 +38,23 @@ export class LanguageBarComponent implements OnInit {
   showModal = false;
   newSelection: string;
 
-  constructor(private store: Store<fromStore.ApplicationState>, private authService: AuthService) {
-      this.languageOptions$ = this.store.select(fromStore.getLanguageOptions);
-      this.currentLang$ = this.store.select(fromStore.getCurrentLang);
-      this.selectedLanguages$ = this.store.select(fromStore.getSavedLanguages);
-      this.isAuth$ = this.store.select(fromStore.getIsAuth);
-    }
+  constructor(private store: Store<fromStore.ApplicationState>, private authService: AuthService) { }
 
   ngOnInit() {
-    this.languageOptions$.subscribe(languages => this.languagesOptions = languages);
-    this.currentLang$.subscribe(lang => this.currentLang = lang);
-    this.selectedLanguages$.subscribe(langs => this.selectedLanguages = langs);
+    this.languageOptions$ = this.store.select(fromStore.getLanguageOptions);
+    this.currentLang$ = this.store.select(fromStore.getCurrentLang);
+    this.selectedLanguages$ = this.store.select(fromStore.getSavedLanguages);
+    this.isAuth$ = this.store.select(fromStore.getIsAuth);
+
+    this.languageOptions$.pipe(
+      takeUntil(componentDestroyed(this)))
+      .subscribe(languages => this.languagesOptions = languages);
+    this.currentLang$.pipe(
+      takeUntil(componentDestroyed(this)))
+      .subscribe(lang => this.currentLang = lang);
+    this.selectedLanguages$.pipe(
+      takeUntil(componentDestroyed(this)))
+      .subscribe(langs => this.selectedLanguages = langs);
   }
 
   getLangName = (lang) => {
@@ -89,4 +95,6 @@ export class LanguageBarComponent implements OnInit {
   toggle = () => {
     this.isExpanded = !this.isExpanded;
   }
+
+  ngOnDestroy() {}
 }

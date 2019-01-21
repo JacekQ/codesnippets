@@ -26,6 +26,7 @@
     "@ngrx/router-store": "^6.1.2",
     "@ngrx/store": "^6.1.2",
     "@ngrx/store-devtools": "^6.1.2",
+    "@w11k/ngx-componentdestroyed": "^4.1.4",
     "angular2-highlight-js": "^6.0.1-alpha",
     "angularfire2": "^5.1.1",
     "core-js": "^2.5.4",

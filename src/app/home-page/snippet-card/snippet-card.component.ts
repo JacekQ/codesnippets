@@ -30,11 +30,11 @@ export class SnippetCardComponent implements OnInit {
   showModal = false;
   linkClicked = false;
 
-  constructor(private highlightJsService: HighlightJsService, private store: Store<fromRoot.ApplicationState>) {
+  constructor(private highlightJsService: HighlightJsService, private store: Store<fromRoot.ApplicationState>) { }
+
+  ngOnInit() {
     this.isAuth$ = this.store.select(fromRoot.getIsAuth);
   }
-
-  ngOnInit() {}
 
   onDelete(snippet) {
     this.showModal = false;

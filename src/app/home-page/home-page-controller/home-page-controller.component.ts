@@ -29,14 +29,14 @@ export class HomePageControllerComponent implements OnInit {
   isAuth$: Observable<boolean>;
 
   constructor(private store: Store<fromStore.ApplicationState>,
-    private resolver: ComponentFactoryResolver) {
+    private resolver: ComponentFactoryResolver) { }
+
+    ngOnInit() {
       this.loadedSnippets$ = this.store.select(fromStore.getLoadedSnippets);
       this.isLoadedSnippets$ = this.store.select(fromStore.getSnippetsIsLoaded);
       this.currentLang$ = this.store.select(fromStore.getCurrentLang);
       this.isAuth$ = this.store.select(fromStore.getIsAuth);
   }
-
-  ngOnInit() {}
 
   onEditSnippet(snippet) {
     const formFactory = this.resolver.resolveComponentFactory(
